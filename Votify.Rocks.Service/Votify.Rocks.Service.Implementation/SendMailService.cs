@@ -30,45 +30,38 @@ namespace Votify.Rocks.Service
 
         public async Task ShareSessionViaEmail(string email, string voteSessionKey, string base64GaugeImage = null)
         {
-            try
-            {
-                var voteSession = _voteSessionService.Get(voteSessionKey);
-                SendGridMessage myMessage = new SendGridMessage();
-                myMessage.AddTo(email);
-                myMessage.From = new MailAddress("noreply@votify.rocks", "votify.rocks");
-                myMessage.Subject = $"votify.rocks results for vote session {voteSession.SessionKey}";
+            var voteSession = _voteSessionService.Get(voteSessionKey);
+            SendGridMessage myMessage = new SendGridMessage();
+            myMessage.AddTo(email);
+            myMessage.From = new MailAddress("noreply@votify.rocks", "votify.rocks");
+            myMessage.Subject = $"votify.rocks results for vote session {voteSession.SessionKey}";
 
-                myMessage.Html = BuildHtmlMessageBody(voteSession);
-                var gaugeEmailImage = Convert.FromBase64String(base64GaugeImage ?? MissingImgBase46);
-                Stream stream = new MemoryStream(gaugeEmailImage);
-                var att = new Attachment(stream, "justguage");
-                myMessage.AddAttachment(att.ContentStream, att.Name);
-                myMessage.EmbedImage(att.Name, "guagecid");
-                myMessage.EnableTemplateEngine(VoteSessionEmailTemplateId);
-                //myMessage.AddSubstitution(":vote-value", new List<string> { voteSession.VoteAverage.ToString(CultureInfo.InvariantCulture) });
-                //myMessage.AddSubstitution(":description", new List<string> { voteSession.Description });
-                //myMessage.AddSubstitution(":vote-session-key", new List<string> { voteSession.SessionKey });
-                //myMessage.AddSubstitution(":date", new List<string> { voteSession.CreateDateTime.ToString("D") });
-                //myMessage.AddSubstitution(":organizer", new List<string> { voteSession.Organizer.DisplayName });
-                myMessage.AddSubstitution(":participants",
-                    new List<string>
-                    {
-                        string.Join(string.Empty,
-                            voteSession.Participants.Select(
-                                x =>
-                                    $"<li>{x.DisplayName} - (<span class='badge vote-{x.VoteValue}'>{x.VoteValue}</span>)</li>"))
-                    });
+            myMessage.Html = BuildHtmlMessageBody(voteSession);
+            var gaugeEmailImage = Convert.FromBase64String(base64GaugeImage ?? MissingImgBase46);
+            Stream stream = new MemoryStream(gaugeEmailImage);
+            var att = new Attachment(stream, "justguage");
+            myMessage.AddAttachment(att.ContentStream, att.Name);
+            myMessage.EmbedImage(att.Name, "guagecid");
+            myMessage.EnableTemplateEngine(VoteSessionEmailTemplateId);
+            //myMessage.AddSubstitution(":vote-value", new List<string> { voteSession.VoteAverage.ToString(CultureInfo.InvariantCulture) });
+            //myMessage.AddSubstitution(":description", new List<string> { voteSession.Description });
+            //myMessage.AddSubstitution(":vote-session-key", new List<string> { voteSession.SessionKey });
+            //myMessage.AddSubstitution(":date", new List<string> { voteSession.CreateDateTime.ToString("D") });
+            //myMessage.AddSubstitution(":organizer", new List<string> { voteSession.Organizer.DisplayName });
+            myMessage.AddSubstitution(":participants",
+                new List<string>
+                {
+                    string.Join(string.Empty,
+                        voteSession.Participants.Select(
+                            x =>
+                                $"<li>{x.DisplayName} - (<span class='badge vote-{x.VoteValue}'>{x.VoteValue}</span>)</li>"))
+                });
 
-                // Create an Web transport for sending email.
-                var transportWeb = new Web(_sendGridApiKey);
+            // Create an Web transport for sending email.
+            var transportWeb = new Web(_sendGridApiKey);
 
-                // Send the email, which returns an awaitable task.
-                await transportWeb.DeliverAsync(myMessage);
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            // Send the email, which returns an awaitable task.
+            await transportWeb.DeliverAsync(myMessage);
         }
 
         private string BuildHtmlMessageBody(VoteSession voteSession)

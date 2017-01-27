@@ -131,6 +131,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomNameGeneratorService.cs" />
     <Compile Include="SendMailService.cs" />
+    <Compile Include="VoteSessionStore.cs" />
     <Compile Include="VoteSessionService.cs" />
   </ItemGroup>
   <ItemGroup>

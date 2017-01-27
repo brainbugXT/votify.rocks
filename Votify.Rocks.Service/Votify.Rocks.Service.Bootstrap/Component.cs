@@ -20,11 +20,14 @@ namespace Votify.Rocks.Service.Bootstrap
             var maxParticipants = int.Parse(_settings.GetValue("MaxParticipants"));
             var sendGridApiKey = _settings.GetValue("SendGridApiKey");
             var sessionCacheExpiryHours = _settings.GetValue("SessionCacheExpiryHours");
+            var voteSessionStoreConnectionString = _settings.GetValue("VoteSessionStoreConnectionString");
+            var voteSessionTableName = _settings.GetValue("VoteSessionTableName");
             _container.RegisterType<ICacheObject, MemoryCacheObject>(new InjectionConstructor(TimeSpan.FromHours(double.Parse(sessionCacheExpiryHours))));
             _container.RegisterType<IVoteSessionService, VoteSessionService>(new InjectionConstructor(new ResolvedParameter<ICacheObject>(), maxParticipants));
             _container.RegisterType<IResourceTextReader, EmailTemplateResourceReader>();
             _container.RegisterType<ISendMailService, SendMailService>(new InjectionConstructor(new ResolvedParameter<IVoteSessionService>(), new ResolvedParameter<IResourceTextReader>(), sendGridApiKey));
             _container.RegisterType<IRandomNameGeneratorService, RandomNameGeneratorService>();
+            _container.RegisterType<IVoteSessionStore, VoteSessionStore>(new InjectionConstructor(voteSessionStoreConnectionString, voteSessionTableName));
         }
     }
 }
