@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Serko.Client.Azure.Storage;
 using Votify.Rocks.Service.Models;
@@ -24,13 +25,15 @@ namespace Votify.Rocks.Service
             return new StorageTable(storageTableClient, tableName);
         }
 
-        public async Task<IEnumerable<VoteSessionEntity>> ReadAsync(Guid voteSessionUid, string sessionId)
+        public async Task<VoteSessionEntity> ReadAsync(string sessionKey)
         {
             var storageTable = GetStorageTable(_voteSessionTableName);
 
-            var query = storageTable.BuildQuery<VoteSessionEntity>(sessionId, voteSessionUid.ToString());
+            var query = storageTable.BuildQuery<VoteSessionEntity>(rowKey:sessionKey);
 
-            return await storageTable.QueryAsync(query);
+            var queryResult = await storageTable.QueryAsync(query);
+
+            return queryResult.FirstOrDefault();
         }
 
         public async Task WriteVoteSessionAsync(VoteSessionEntity voteSessionEntity)

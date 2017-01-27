@@ -9,7 +9,7 @@ namespace Votify.Rocks.Service
     public interface IVoteSessionStore
     {
         Task DeleteVoteSessionAsync(VoteSessionEntity voteSessionEntity);
-        Task<IEnumerable<VoteSessionEntity>> ReadAsync(Guid voteSessionUid, string sessionId);
+        Task<VoteSessionEntity> ReadAsync(string sessionKey);
         Task WriteVoteSessionAsync(VoteSessionEntity voteSessionEntity);
     }
 }

@@ -100,14 +100,14 @@ namespace Votify.Rocks.VoteSession.SignalR.Hubs
                 _voteSessionService = voteSessionService;
             }
 
-            public void DisconnectAndBroadcast(object state)
+            public async void DisconnectAndBroadcast(object state)
             {
                 ClientVoteSessionManager.ClientVoteSession clientVoteSession;
                 _voteSessionBroadcaster.ClientVoteSessions.TryRemove(_hubContext.ConnectionId, out clientVoteSession);
 
                 if (clientVoteSession == null) return;
 
-                var voteSession = _voteSessionService.Get(clientVoteSession.SessionKey);
+                var voteSession = await _voteSessionService.GetAsync(clientVoteSession.SessionKey);
 
                 var participant = voteSession?.Participants.FirstOrDefault(x => x.Uid == clientVoteSession.ParticipantUid);
                 if (participant != null)

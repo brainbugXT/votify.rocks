@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using Moq;
 using NUnit.Framework;
 using Votify.Rocks.Service.Exceptions;
 
@@ -11,13 +13,15 @@ namespace Votify.Rocks.Service.Tests
     {
         private VoteSessionService _underTest;
         private ICacheObject _cacheObjectMock;
+        private Mock<IVoteSessionStoreService> _voteSessionStoreServiceMock;
         private int _maxParticipants = 20;
 
         [SetUp]
         public void Setup()
         {
             _cacheObjectMock = new MemoryCacheObject(TimeSpan.FromMinutes(1));
-            _underTest = new VoteSessionService(_cacheObjectMock, _maxParticipants);
+            _voteSessionStoreServiceMock = new Mock<IVoteSessionStoreService>();
+            _underTest = new VoteSessionService(_voteSessionStoreServiceMock.Object, _cacheObjectMock, _maxParticipants);
         }
 
         [TestCase("John", "John4")]
@@ -75,12 +79,12 @@ namespace Votify.Rocks.Service.Tests
         }
 
         [Test]
-        public void VoteSessionsMustBeCaseInsesitive()
+        public async Task VoteSessionsMustBeCaseInsesitive()
         {
             var organizer = _underTest.CreateParticipant("Organizer", false);
             var voteSession = _underTest.Create(organizer, "");
 
-            var voteSessionFromMemory = _underTest.Get(voteSession.SessionKey.ToLower());
+            var voteSessionFromMemory = await _underTest.GetAsync(voteSession.SessionKey.ToLower());
 
             Assert.AreSame(voteSession, voteSessionFromMemory);
         }

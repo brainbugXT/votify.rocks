@@ -133,6 +133,7 @@
     <Compile Include="SendMailService.cs" />
     <Compile Include="VoteSessionStore.cs" />
     <Compile Include="VoteSessionService.cs" />
+    <Compile Include="VoteSessionStoreService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Votify.Rocks.Service.Contract\Votify.Rocks.Service.Contract.csproj">

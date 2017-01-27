@@ -80,6 +80,7 @@
     <Compile Include="IRandomNameGeneratorService.cs" />
     <Compile Include="ISendMailService.cs" />
     <Compile Include="IVoteSessionService.cs" />
+    <Compile Include="IVoteSessionStoreService.cs" />
     <Compile Include="Models\Participant.cs" />
     <Compile Include="Models\VoteSession.cs" />
     <Compile Include="Models\VoteSessionDto.cs" />

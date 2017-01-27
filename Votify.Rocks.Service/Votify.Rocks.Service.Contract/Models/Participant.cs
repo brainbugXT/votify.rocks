@@ -4,7 +4,7 @@ namespace Votify.Rocks.Service.Models
 {
     public class Participant
     {
-        private Guid? _uid { get; set; }
+        public Guid? _uid { get; set; }
 
         public Guid Uid
         {
@@ -23,5 +23,6 @@ namespace Votify.Rocks.Service.Models
         public bool IsOrganizer { get; set; }
         public int VoteValue { get; set; }
         public bool CanVote { get; set; }
+        public string Email { get; set; }
     }
 }

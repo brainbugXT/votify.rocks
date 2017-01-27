@@ -30,7 +30,7 @@ namespace Votify.Rocks.Service
 
         public async Task ShareSessionViaEmail(string email, string voteSessionKey, string base64GaugeImage = null)
         {
-            var voteSession = _voteSessionService.Get(voteSessionKey);
+            var voteSession = await _voteSessionService.GetAsync(voteSessionKey);
             SendGridMessage myMessage = new SendGridMessage();
             myMessage.AddTo(email);
             myMessage.From = new MailAddress("noreply@votify.rocks", "votify.rocks");
