@@ -43,8 +43,8 @@
       <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Serko.Services.Contract, Version=3.5.1.2339, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Serko.Services.Core.3.5.1\lib\net45\Serko.Services.Contract.dll</HintPath>
+    <Reference Include="Serko.Services.Contract, Version=3.12.1.3597, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Services.Core.3.12.1\lib\net45\Serko.Services.Contract.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

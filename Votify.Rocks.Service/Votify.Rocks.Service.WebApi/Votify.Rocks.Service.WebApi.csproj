@@ -50,12 +50,12 @@
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Serko.Services.Contract, Version=3.10.3.3183, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Serko.Services.Core.3.10.3\lib\net45\Serko.Services.Contract.dll</HintPath>
+    <Reference Include="Serko.Services.Contract, Version=3.12.1.3597, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Services.Core.3.12.1\lib\net45\Serko.Services.Contract.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Serko.Wiring, Version=3.3.9.3154, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Serko.Wiring.Core.3.3.9\lib\net45\Serko.Wiring.dll</HintPath>
+    <Reference Include="Serko.Wiring, Version=3.4.2.3523, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Wiring.Core.3.4.2\lib\net45\Serko.Wiring.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

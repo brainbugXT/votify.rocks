@@ -66,8 +66,8 @@
       <HintPath>..\packages\Sendgrid.6.3.4\lib\SendGridMail.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Serko.Services.Contract, Version=3.10.3.3183, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Serko.Services.Core.3.10.3\lib\net45\Serko.Services.Contract.dll</HintPath>
+    <Reference Include="Serko.Services.Contract, Version=3.12.1.3597, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Services.Core.3.12.1\lib\net45\Serko.Services.Contract.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

@@ -42,8 +42,8 @@
       <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Serko.Wiring, Version=3.3.9.3154, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Serko.Wiring.Core.3.3.9\lib\net45\Serko.Wiring.dll</HintPath>
+    <Reference Include="Serko.Wiring, Version=3.4.2.3523, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Wiring.Core.3.4.2\lib\net45\Serko.Wiring.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

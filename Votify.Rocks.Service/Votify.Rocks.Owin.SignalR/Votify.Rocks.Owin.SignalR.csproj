@@ -68,52 +68,52 @@
     <Reference Include="Owin">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
-    <Reference Include="Serko.Client.Logs.Contract, Version=2.0.1.2738, Culture=neutral, PublicKeyToken=6f3596f6ed7570ec, processorArchitecture=MSIL">
-      <HintPath>..\packages\Serko.Client.Logs.Core.2.0.1\lib\net45\Serko.Client.Logs.Contract.dll</HintPath>
+    <Reference Include="Serko.Client.Logs.Contract, Version=3.0.0.3297, Culture=neutral, PublicKeyToken=6f3596f6ed7570ec, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Client.Logs.Core.3.0.0\lib\net45\Serko.Client.Logs.Contract.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Serko.Logging, Version=3.0.8.2745, Culture=neutral, PublicKeyToken=6f3596f6ed7570ec, processorArchitecture=MSIL">
       <HintPath>..\packages\Serko.Logging.Core.3.0.8\lib\net45\Serko.Logging.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Serko.Logging.Bootstrap, Version=3.3.2.3181, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Serko.Logging.3.3.2\lib\net45\Serko.Logging.Bootstrap.dll</HintPath>
+    <Reference Include="Serko.Logging.Bootstrap, Version=3.4.2.3349, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Logging.3.4.2\lib\net45\Serko.Logging.Bootstrap.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Serko.Logging.Implementation, Version=3.3.2.3181, Culture=neutral, PublicKeyToken=6f3596f6ed7570ec, processorArchitecture=MSIL">
-      <HintPath>..\packages\Serko.Logging.3.3.2\lib\net45\Serko.Logging.Implementation.dll</HintPath>
+    <Reference Include="Serko.Logging.Implementation, Version=3.4.2.3349, Culture=neutral, PublicKeyToken=6f3596f6ed7570ec, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Logging.3.4.2\lib\net45\Serko.Logging.Implementation.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Serko.Services.Common, Version=3.0.2.2372, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Serko.Services.Common.3.0.2\lib\net45\Serko.Services.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Serko.Unity.Common, Version=1.0.1.2698, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Serko.Unity.1.0.1\lib\net45\Serko.Unity.Common.dll</HintPath>
+    <Reference Include="Serko.Unity.Common, Version=1.0.3.3281, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Unity.1.0.3\lib\net45\Serko.Unity.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Serko.Unity.Decorator, Version=1.0.1.2698, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Serko.Unity.1.0.1\lib\net45\Serko.Unity.Decorator.dll</HintPath>
+    <Reference Include="Serko.Unity.Decorator, Version=1.0.3.3281, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Unity.1.0.3\lib\net45\Serko.Unity.Decorator.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Serko.Wiring, Version=3.3.9.3154, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Serko.Wiring.Core.3.3.9\lib\net45\Serko.Wiring.dll</HintPath>
+    <Reference Include="Serko.Wiring, Version=3.4.2.3523, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Wiring.Core.3.4.2\lib\net45\Serko.Wiring.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Serko.Wiring.Bootstrap, Version=3.3.9.3154, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Serko.Wiring.3.3.9\lib\net45\Serko.Wiring.Bootstrap.dll</HintPath>
+    <Reference Include="Serko.Wiring.Bootstrap, Version=3.4.2.3523, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Wiring.3.4.2\lib\net45\Serko.Wiring.Bootstrap.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Serko.Wiring.Configuration, Version=3.3.9.3154, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Serko.Wiring.3.3.9\lib\net45\Serko.Wiring.Configuration.dll</HintPath>
+    <Reference Include="Serko.Wiring.Configuration, Version=3.4.2.3523, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Wiring.3.4.2\lib\net45\Serko.Wiring.Configuration.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Serko.Wiring.Configuration.Bootstrap, Version=3.3.9.3154, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Serko.Wiring.3.3.9\lib\net45\Serko.Wiring.Configuration.Bootstrap.dll</HintPath>
+    <Reference Include="Serko.Wiring.Configuration.Bootstrap, Version=3.4.2.3523, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Wiring.3.4.2\lib\net45\Serko.Wiring.Configuration.Bootstrap.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Serko.Wiring.Implementation, Version=3.3.9.3154, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Serko.Wiring.3.3.9\lib\net45\Serko.Wiring.Implementation.dll</HintPath>
+    <Reference Include="Serko.Wiring.Implementation, Version=3.4.2.3523, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Wiring.3.4.2\lib\net45\Serko.Wiring.Implementation.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
