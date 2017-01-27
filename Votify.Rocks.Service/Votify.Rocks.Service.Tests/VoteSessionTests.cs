@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 using Votify.Rocks.Service.Exceptions;
@@ -15,7 +16,7 @@ namespace Votify.Rocks.Service.Tests
         [SetUp]
         public void Setup()
         {
-            _cacheObjectMock = new MemoryCacheObject();
+            _cacheObjectMock = new MemoryCacheObject(TimeSpan.FromMinutes(1));
             _underTest = new VoteSessionService(_cacheObjectMock, _maxParticipants);
         }
 

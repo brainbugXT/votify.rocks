@@ -32,7 +32,7 @@ namespace Votify.Rocks.Service
                 OpenForVoting = false
             };
 
-            _memoryCacheObject.SetCachedObject(voteSessionKey, voteSessionObject, TimeSpan.FromHours(1));
+            _memoryCacheObject.SetCachedObject(voteSessionKey, voteSessionObject);
 
             return voteSessionObject;
         }

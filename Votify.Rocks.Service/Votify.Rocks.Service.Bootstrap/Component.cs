@@ -1,4 +1,5 @@
-﻿using Microsoft.Practices.Unity;
+﻿using System;
+using Microsoft.Practices.Unity;
 using Serko.Wiring;
 
 namespace Votify.Rocks.Service.Bootstrap
@@ -18,7 +19,8 @@ namespace Votify.Rocks.Service.Bootstrap
         {
             var maxParticipants = int.Parse(_settings.GetValue("MaxParticipants"));
             var sendGridApiKey = _settings.GetValue("SendGridApiKey");
-            _container.RegisterType<ICacheObject, MemoryCacheObject>();
+            var sessionCacheExpiryHours = _settings.GetValue("SessionCacheExpiryHours");
+            _container.RegisterType<ICacheObject, MemoryCacheObject>(new InjectionConstructor(TimeSpan.FromHours(double.Parse(sessionCacheExpiryHours))));
             _container.RegisterType<IVoteSessionService, VoteSessionService>(new InjectionConstructor(new ResolvedParameter<ICacheObject>(), maxParticipants));
             _container.RegisterType<IResourceTextReader, EmailTemplateResourceReader>();
             _container.RegisterType<ISendMailService, SendMailService>(new InjectionConstructor(new ResolvedParameter<IVoteSessionService>(), new ResolvedParameter<IResourceTextReader>(), sendGridApiKey));
