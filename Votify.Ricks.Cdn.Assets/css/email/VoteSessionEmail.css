@@ -1,0 +1,52 @@
+﻿body {
+    font-family: Tahoma;
+}
+
+ul.participants {
+    list-style: none;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 300px;
+}
+
+    ul.participants li {
+        list-style: none;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        background-color: gainsboro;
+        -ms-border-radius: 14px;
+        border-radius: 14px;
+        padding: 4px;
+        line-height: 22px;
+        padding-left: 8px;
+        margin-bottom: 2px;
+    }
+
+.badge {
+    float: right;
+    margin-top: 2px;
+    margin-right: 2px;
+    -ms-border-radius: 9px;
+    border-radius: 9px;
+    width: 18px;
+    height: 18px;
+    color: white;
+    display: inline-block;
+    text-align: center;
+    line-height: 18px;
+    font-size: 14px;
+}
+
+    .badge.vote-1 {
+        background-color: #ff0000;
+    }
+
+    .badge.vote-2, .badge.vote-3 {
+        background-color: #f9c802;
+    }
+
+    .badge.vote-4, .badge.vote-5 {
+        background-color: #a9d70b;
+    }

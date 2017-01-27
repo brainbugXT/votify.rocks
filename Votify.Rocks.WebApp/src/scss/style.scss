@@ -1,0 +1,43 @@
+body{
+    background-image: url("https://conficast.blob.core.windows.net/images/default_bg.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: #94CDD3;
+}
+
+.session-access-container{
+    position: relative;
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+}
+
+.floating-create-button,
+.floating-start-session-button{
+    margin-right: 30px;
+    margin-bottom: 20px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+.vote-session-container{
+    .app-bar{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 999;
+    }
+    .session-components{
+        padding-top: 2.8rem;
+        position: relative;
+        max-width: 600px;
+        margin: auto;
+        text-align: center;
+
+        .participant-list{
+            text-align: left;
+        }
+    }
+}

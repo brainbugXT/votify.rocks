@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Your Serko Web Service</title>
+    
+    <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAD///8A5sugZcqONePGhCP/yIcq/8qJMP/MjDL/zY82/8+SOP/RlTz/05g//9WbQ//XnkP/3KpY4+/ZtGX///8A5sugZcSBHP/GhCP/yIcq/8qJMP/MjDL/zY82/8+SOP/RlTz/05g//9WbQ//XnkP/2KBE/9mhRf/apEP/8NuzZcqPNuDGhCP/yIcq/8qJMP/MjDL/zY82/8+SOP/RlTz/05g//9WbQ//XnkP/2KBE/9mhRf/apEP/3KZE/+GyWuDGhCP/yIcq/8qJMP/MjDL/zY82/9CVPf/ZqF//37Nx/92vaf/YoEf/2KBE/9mhRf/apEP/3KZE/92oRP/fqkX/yIcq/8qJMP/MjDL/zY82/9WgUf/8+fT/////////////////+/bu/+S8e//apEP/3KZE/92oRP/fqkX/4KxG/8qJMP/MjDL/zY82/8+SOP/Slj7//Pn0//bp1v/w27n/+/Xr///////9+vX/3qpM/92oRP/fqkX/4KxG/+GuRv/MjDL/zY82/8+SOP/RlTz/05g//9mkVP/XnkP/2KFF/+/Wr////////////+K2Yv/fqkX/4KxG/+GuRv/jsEX/zY82/8+SOP/RlTz/05g//9WbQ//Xn0T/58aO//nx4/////////////z37v/grEr/4KxG/+GuRv/jsEX/5LJE/9utav/dsG3/3rJv/+C0cv/htnL/8+HF//////////////////v05//szI//6MF0/+nCdP/qxHT/68Vz/+zIc//RlTz/05g//9WbQ//XnkP/2KBF//79+///////+vLj/+bAd//fqkb/4KxG/+GuRv/jsEX/5LJE/+a1RP/nt0X/05g//9WbQ//XnkP/2KBE/9mhRf/8+PD///////ju2v/qyIb/8Nak/+zLh//jsEX/5LJE/+a1RP/nt0X/6blF/9WbQ//WnUT/2KBE/9mhRf/apEP/6MSD//7+/P/////////////////258b/5LJE/+a1RP/nt0X/6blF/+q8RP/WnUT/2KBE/9mhRf/apEP/3KZE/92oRP/kt2H/7tKa//Haq//w05j/6b9k/+a1RP/nt0X/6blF/+q8RP/svkP/3Ktb3tmhRf/apEP/3KZE/92oRP/fqkX/4KxG/+GuRv/jsEX/5LJE/+a1RP/nt0X/6blF/+q8RP/svkP/8MhZ3vDat2LapEP/3KZE/92oRP/fqkX/4KxG/+GuRv/jsEX/5LJE/+a1RP/nt0X/6blF/+q8RP/svkP/7sFC//jntWL///8A8dy2YuGyW97fqkX/4KxG/+GuRv/jsEX/5LJE/+a1RP/nt0X/6blF/+q8RP/svkP/8MhZ3vjntWL///8AwAMAAIABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAQAAwAMAAA==">
+    <link rel="stylesheet" href="https://az834239.vo.msecnd.net/serko-bootstrap/1.0.0-beta.5/sko-bootstrap.min.css">
+
+    <style>
+        header h1 {
+            font-size: 2em;
+            margin: 0;
+            padding: 2em;
+        }
+
+        header h2 {
+            font-size: 1.5em;
+            color: #fff;
+            padding: 1em 2em;
+        }
+
+        section h4 {
+            margin: 1em 0;
+        }
+
+        code {
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container-fluid">
+        <header>
+            <h1 class="sko-text-primary">Your Serko Web Service</h1>
+            <h2 class="sko-bg-primary">Congratulations! You've created a project</h2>
+        </header>
+
+        <div id="main" class="row">
+            <section class="col-sm-4 col-md-3">
+                <h4 class="text-uppercase">Consists of</h4>
+                <ul class="list-group">
+                    <li>Web Host for hosting your service within IIS. (Votify.Rocks.Service.WebHost)</li>
+                    <li>WebApi library to contain your WebApi controllers. (Votify.Rocks.Service.WebApi)</li>
+                    <li>Contract library to contain your interfaces and DTOs. (Votify.Rocks.Service.Contract)</li>
+                    <li>Service library to contain your service implementation. (Votify.Rocks.Service.Implementation)</li>
+                    <li>Bootstrap library to wire your service and contract together. (Votify.Rocks.Service.Bootstrap)</li>
+                </ul>
+            </section>
+            
+            <section class="col-sm-4 col-md-3">
+                <h4 class="text-uppercase">Service Links</h4>
+                <div class="list-group">
+                    <a class="list-group-item" target="_blank" href="/values">
+                        <h5>Values (first service)</h5>
+                        <code>/values</code>
+                    </a>
+                    <a class="list-group-item" target="_blank" href="/swagger">
+                        <h5>Api Swagger documentation</h5>
+                        <code>/swagger</code>
+                    </a>
+                    <a class="list-group-item" target="_blank" href="/help">
+                        <h5>Api Help docs</h5>
+                        <code>/help</code>
+                    </a>
+                    <a class="list-group-item" target="_blank" href="/logs/history">
+                        <h5>Logs</h5>
+                        <code>/logs/history</code>
+                    </a>
+                    <a class="list-group-item" target="_blank" href="/diagnostics/wiring">
+                        <h5>Dependency Injection Trace</h5>
+                        <code>/diagnostics/wiring</code>
+                    </a>
+                </div>
+            </section>
+
+            <section class="col-sm-4 col-md-3">
+                <h4 class="text-uppercase">Customize app</h4>
+                <ul class="list-unstyled">
+                    <li><a href="https://serko-confluence.atlassian.net/wiki/display/SP/REST+API+Style+Guide" target="_blank">REST API Style Guide</a></li>
+                </ul>
+            </section>
+
+            <section class="col-sm-4 col-md-3">
+                <h4 class="text-uppercase">Deploy</h4>
+                <ul class="list-unstyled">
+                    <li>Coming soon...</li>
+                </ul>
+            </section>
+
+            <section class="col-sm-4 col-md-3">
+                <h4 class="text-uppercase">Get help</h4>
+                <ul class="list-unstyled">
+                    <li>Coming soon...</li>
+                </ul>
+            </section>
+
+        </div>
+    </div>    
+
+    <!-- Modernizr for browser features used by the Serko Bootstrap css and javascript -->
+    <script src="https://az834239.vo.msecnd.net/serko-bootstrap/1.0.0-beta.5/lib/modernizr/modernizr-custom.min.js"></script>
+</body>
+</html>
+

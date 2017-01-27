@@ -1,0 +1,82 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Votify.Rocks.Service.WebHost", "Votify.Rocks.Service.WebHost\Votify.Rocks.Service.WebHost.csproj", "{80662D3F-21A3-4C71-A66C-17EB5DC67F00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Votify.Rocks.Service.Implementation", "Votify.Rocks.Service.Implementation\Votify.Rocks.Service.Implementation.csproj", "{669AD3B0-341F-4B67-B18B-16BBE2E8EC05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Votify.Rocks.Service.Contract", "Votify.Rocks.Service.Contract\Votify.Rocks.Service.Contract.csproj", "{2F12EE90-E087-440D-B5D9-639CB53971D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Votify.Rocks.Service.Bootstrap", "Votify.Rocks.Service.Bootstrap\Votify.Rocks.Service.Bootstrap.csproj", "{E6E4CC6F-6499-486D-BFE7-7EAED75DCE51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Votify.Rocks.Service.WebApi", "Votify.Rocks.Service.WebApi\Votify.Rocks.Service.WebApi.csproj", "{1ACABDCA-CB44-48D4-B788-1850FA843D82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Votify.Rocks.Owin.SignalR.Bootstrap", "Votify.Rocks.Owin.SignalR.Bootstrap\Votify.Rocks.Owin.SignalR.Bootstrap.csproj", "{E008CADE-AFB6-4733-8C9C-853D003B9D46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Votify.Rocks.Owin.SignalR", "Votify.Rocks.Owin.SignalR\Votify.Rocks.Owin.SignalR.csproj", "{FCEDE1F3-DF27-4000-8BBE-1B637F7E2CF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Votify.Rocks.Service.Tests", "Votify.Rocks.Service.Tests\Votify.Rocks.Service.Tests.csproj", "{39D27A21-E3E2-4E25-B26F-540E1529689D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Votify.Rocks.VoteSession.SignalR", "Votify.Rocks.VoteSession.SignalR.Implementation\Votify.Rocks.VoteSession.SignalR.csproj", "{CE84CC71-1523-45C7-8D24-FD4AD775AE44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Votify.Rocks.VoteSession.SignalR.Bootstrap", "Votify.Rocks.VoteSession.SignalR.Bootstrap\Votify.Rocks.VoteSession.SignalR.Bootstrap.csproj", "{57DD049A-2C21-4B2C-92F8-F6DE1BEBECED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Votify.Rocks.VoteSession.SignalR.Contract", "Votify.Rocks.VoteSession.SignalR.Contract\Votify.Rocks.VoteSession.SignalR.Contract.csproj", "{1AFB5FC6-9446-4570-BC92-3BEEA546B7E1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{80662D3F-21A3-4C71-A66C-17EB5DC67F00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80662D3F-21A3-4C71-A66C-17EB5DC67F00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80662D3F-21A3-4C71-A66C-17EB5DC67F00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80662D3F-21A3-4C71-A66C-17EB5DC67F00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{669AD3B0-341F-4B67-B18B-16BBE2E8EC05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{669AD3B0-341F-4B67-B18B-16BBE2E8EC05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{669AD3B0-341F-4B67-B18B-16BBE2E8EC05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{669AD3B0-341F-4B67-B18B-16BBE2E8EC05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F12EE90-E087-440D-B5D9-639CB53971D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F12EE90-E087-440D-B5D9-639CB53971D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F12EE90-E087-440D-B5D9-639CB53971D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F12EE90-E087-440D-B5D9-639CB53971D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6E4CC6F-6499-486D-BFE7-7EAED75DCE51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6E4CC6F-6499-486D-BFE7-7EAED75DCE51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6E4CC6F-6499-486D-BFE7-7EAED75DCE51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6E4CC6F-6499-486D-BFE7-7EAED75DCE51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1ACABDCA-CB44-48D4-B788-1850FA843D82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ACABDCA-CB44-48D4-B788-1850FA843D82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1ACABDCA-CB44-48D4-B788-1850FA843D82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1ACABDCA-CB44-48D4-B788-1850FA843D82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E008CADE-AFB6-4733-8C9C-853D003B9D46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E008CADE-AFB6-4733-8C9C-853D003B9D46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E008CADE-AFB6-4733-8C9C-853D003B9D46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E008CADE-AFB6-4733-8C9C-853D003B9D46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCEDE1F3-DF27-4000-8BBE-1B637F7E2CF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCEDE1F3-DF27-4000-8BBE-1B637F7E2CF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCEDE1F3-DF27-4000-8BBE-1B637F7E2CF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCEDE1F3-DF27-4000-8BBE-1B637F7E2CF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39D27A21-E3E2-4E25-B26F-540E1529689D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39D27A21-E3E2-4E25-B26F-540E1529689D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39D27A21-E3E2-4E25-B26F-540E1529689D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39D27A21-E3E2-4E25-B26F-540E1529689D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE84CC71-1523-45C7-8D24-FD4AD775AE44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE84CC71-1523-45C7-8D24-FD4AD775AE44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE84CC71-1523-45C7-8D24-FD4AD775AE44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE84CC71-1523-45C7-8D24-FD4AD775AE44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57DD049A-2C21-4B2C-92F8-F6DE1BEBECED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57DD049A-2C21-4B2C-92F8-F6DE1BEBECED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57DD049A-2C21-4B2C-92F8-F6DE1BEBECED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57DD049A-2C21-4B2C-92F8-F6DE1BEBECED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AFB5FC6-9446-4570-BC92-3BEEA546B7E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AFB5FC6-9446-4570-BC92-3BEEA546B7E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AFB5FC6-9446-4570-BC92-3BEEA546B7E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AFB5FC6-9446-4570-BC92-3BEEA546B7E1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

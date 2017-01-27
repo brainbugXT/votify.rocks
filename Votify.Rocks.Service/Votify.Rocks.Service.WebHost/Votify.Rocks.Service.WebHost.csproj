@@ -1,0 +1,449 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Serko.Services.WebHost.3.10.3\build\Serko.Services.WebHost.props" Condition="Exists('..\packages\Serko.Services.WebHost.3.10.3\build\Serko.Services.WebHost.props')" />
+  <Import Project="..\packages\Serko.Services.WebHost.Core.3.10.3\build\Serko.Services.WebHost.Core.props" Condition="Exists('..\packages\Serko.Services.WebHost.Core.3.10.3\build\Serko.Services.WebHost.Core.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{80662D3F-21A3-4C71-A66C-17EB5DC67F00}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Votify.Rocks.Service.WebHost</RootNamespace>
+    <AssemblyName>Votify.Rocks.Service.WebHost</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Diagnostics">
+      <HintPath>..\packages\Microsoft.Owin.Diagnostics.3.0.0\lib\net45\Microsoft.Owin.Diagnostics.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.FileSystems">
+      <HintPath>..\packages\Microsoft.Owin.FileSystems.3.0.0\lib\net45\Microsoft.Owin.FileSystems.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.StaticFiles">
+      <HintPath>..\packages\Microsoft.Owin.StaticFiles.3.0.0\lib\net45\Microsoft.Owin.StaticFiles.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.2\lib\portable-windows8+net40+sl5+windowsphone8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RazorEngine">
+      <HintPath>..\packages\RazorEngine.3.7.0\lib\net45\RazorEngine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Client.Logs.Contract, Version=2.0.4.3003, Culture=neutral, PublicKeyToken=6f3596f6ed7570ec, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Client.Logs.Core.2.0.4\lib\net45\Serko.Client.Logs.Contract.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Client.Logs.Memory.Bootstrap, Version=1.3.2.3076, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Client.Logs.Memory.1.3.2\lib\net45\Serko.Client.Logs.Memory.Bootstrap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Client.Logs.Memory.Implementation, Version=1.3.2.3076, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Client.Logs.Memory.1.3.2\lib\net45\Serko.Client.Logs.Memory.Implementation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Logging">
+      <HintPath>..\packages\Serko.Logging.Core.3.0.8\lib\net45\Serko.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Logging.Bootstrap, Version=3.3.2.3181, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Logging.3.3.2\lib\net45\Serko.Logging.Bootstrap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Logging.Implementation, Version=3.3.2.3181, Culture=neutral, PublicKeyToken=6f3596f6ed7570ec, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Logging.3.3.2\lib\net45\Serko.Logging.Implementation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Performance">
+      <HintPath>..\packages\Serko.Performance.Core.1.0.3\lib\net40\Serko.Performance.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Performance.Implementation">
+      <HintPath>..\packages\Serko.Performance.1.0.6\lib\net45\Serko.Performance.Implementation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Performance.Wiring">
+      <HintPath>..\packages\Serko.Performance.1.0.6\lib\net45\Serko.Performance.Wiring.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.Common">
+      <HintPath>..\packages\Serko.Services.Common.3.0.2\lib\net45\Serko.Services.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.Contract, Version=3.10.3.3183, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Services.Core.3.10.3\lib\net45\Serko.Services.Contract.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.Diagnostics.Ping.WebApi, Version=1.0.3.2938, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Services.Diagnostics.Ping.1.0.3\lib\net45\Serko.Services.Diagnostics.Ping.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.Diagnostics.Version.Contract">
+      <HintPath>..\packages\Serko.Services.Diagnostics.Version.1.0.0\lib\net45\Serko.Services.Diagnostics.Version.Contract.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.Diagnostics.Version.WebApi">
+      <HintPath>..\packages\Serko.Services.Diagnostics.Version.1.0.0\lib\net45\Serko.Services.Diagnostics.Version.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.Diagnostics.Wiring.Bootstrap">
+      <HintPath>..\packages\Serko.Services.Diagnostics.Wiring.1.3.3\lib\net45\Serko.Services.Diagnostics.Wiring.Bootstrap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.Diagnostics.Wiring.Contract">
+      <HintPath>..\packages\Serko.Services.Diagnostics.Wiring.1.3.3\lib\net45\Serko.Services.Diagnostics.Wiring.Contract.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.Diagnostics.Wiring.Implementation">
+      <HintPath>..\packages\Serko.Services.Diagnostics.Wiring.1.3.3\lib\net45\Serko.Services.Diagnostics.Wiring.Implementation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.Diagnostics.Wiring.View">
+      <HintPath>..\packages\Serko.Services.Diagnostics.Wiring.1.3.3\lib\net45\Serko.Services.Diagnostics.Wiring.View.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.Diagnostics.Wiring.WebApi">
+      <HintPath>..\packages\Serko.Services.Diagnostics.Wiring.1.3.3\lib\net45\Serko.Services.Diagnostics.Wiring.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.Help.Bootstrap">
+      <HintPath>..\packages\Serko.Services.Help.3.2.3\lib\net45\Serko.Services.Help.Bootstrap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.Help.Contract">
+      <HintPath>..\packages\Serko.Services.Help.Core.3.2.3\lib\net45\Serko.Services.Help.Contract.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.Help.Implementation">
+      <HintPath>..\packages\Serko.Services.Help.3.2.3\lib\net45\Serko.Services.Help.Implementation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.Help.View">
+      <HintPath>..\packages\Serko.Services.Help.3.2.3\lib\net45\Serko.Services.Help.View.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.Help.WebApi">
+      <HintPath>..\packages\Serko.Services.Help.3.2.3\lib\net45\Serko.Services.Help.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.Http, Version=3.4.2.3201, Culture=neutral, PublicKeyToken=6f3596f6ed7570ec, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Services.Http.Core.3.4.2\lib\net45\Serko.Services.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.Http.Logging, Version=3.4.2.3201, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Services.Http.3.4.2\lib\net45\Serko.Services.Http.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.Http.Security, Version=3.4.2.3201, Culture=neutral, PublicKeyToken=6f3596f6ed7570ec, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Services.Http.3.4.2\lib\net45\Serko.Services.Http.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.Http.Security.Server, Version=3.4.2.3201, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Services.Http.3.4.2\lib\net45\Serko.Services.Http.Security.Server.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.Logs.Bootstrap, Version=3.4.6.3165, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Services.Logs.3.4.6\lib\net45\Serko.Services.Logs.Bootstrap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.Logs.Contract, Version=3.4.6.3165, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Services.Logs.3.4.6\lib\net45\Serko.Services.Logs.Contract.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.Logs.Implementation, Version=3.4.6.3165, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Services.Logs.3.4.6\lib\net45\Serko.Services.Logs.Implementation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.Logs.View, Version=3.4.6.3165, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Services.Logs.3.4.6\lib\net45\Serko.Services.Logs.View.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.Logs.WebApi, Version=3.4.6.3165, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Services.Logs.3.4.6\lib\net45\Serko.Services.Logs.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.Owin.FileServer, Version=3.10.3.3183, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Services.WebHost.Core.3.10.3\lib\net45\Serko.Services.Owin.FileServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.Owin.FileServer.Bootstrap, Version=3.10.3.3183, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Services.WebHost.Core.3.10.3\lib\net45\Serko.Services.Owin.FileServer.Bootstrap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.Owin.Startup, Version=3.10.3.3183, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Services.WebHost.Core.3.10.3\lib\net45\Serko.Services.Owin.Startup.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.Owin.WebApi, Version=3.10.3.3183, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Services.WebHost.Core.3.10.3\lib\net45\Serko.Services.Owin.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.Owin.WebApi.Bootstrap, Version=3.10.3.3183, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Services.WebHost.Core.3.10.3\lib\net45\Serko.Services.Owin.WebApi.Bootstrap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.Razor.Contract, Version=3.2.8.2980, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Services.Razor.Core.3.2.8\lib\net45\Serko.Services.Razor.Contract.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.Razor.Implementation, Version=3.2.8.2980, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Services.Razor.3.2.8\lib\net45\Serko.Services.Razor.Implementation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.Razor.WebApi, Version=3.2.8.2980, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Services.Razor.3.2.8\lib\net45\Serko.Services.Razor.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.Razor.WebApi.Bootstrap, Version=3.2.8.2980, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Services.Razor.3.2.8\lib\net45\Serko.Services.Razor.WebApi.Bootstrap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.Swagger.Bootstrap, Version=3.3.5.3172, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Services.Swagger.3.3.5\lib\net45\Serko.Services.Swagger.Bootstrap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.Swagger.Contract, Version=3.3.5.3172, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Services.Swagger.Core.3.3.5\lib\net45\Serko.Services.Swagger.Contract.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.Swagger.Implementation, Version=3.3.5.3172, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Services.Swagger.3.3.5\lib\net45\Serko.Services.Swagger.Implementation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.WebApi.Bootstrap, Version=3.10.3.3183, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Services.WebHost.Core.3.10.3\lib\net45\Serko.Services.WebApi.Bootstrap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.WebApi.Contract, Version=3.10.3.3183, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Services.WebApi.Core.3.10.3\lib\net45\Serko.Services.WebApi.Contract.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.WebApi.Implementation, Version=3.10.3.3183, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Services.WebHost.Core.3.10.3\lib\net45\Serko.Services.WebApi.Implementation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Services.WebApi.Unity, Version=3.10.3.3183, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Services.WebHost.Core.3.10.3\lib\net45\Serko.Services.WebApi.Unity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Unity.Common, Version=1.0.1.2698, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Unity.1.0.1\lib\net45\Serko.Unity.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Unity.Decorator, Version=1.0.1.2698, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Unity.1.0.1\lib\net45\Serko.Unity.Decorator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Wiring, Version=3.3.9.3154, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Wiring.Core.3.3.9\lib\net45\Serko.Wiring.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Wiring.Bootstrap, Version=3.3.9.3154, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Wiring.3.3.9\lib\net45\Serko.Wiring.Bootstrap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Wiring.Configuration, Version=3.3.9.3154, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Wiring.3.3.9\lib\net45\Serko.Wiring.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Wiring.Configuration.Bootstrap, Version=3.3.9.3154, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Wiring.3.3.9\lib\net45\Serko.Wiring.Configuration.Bootstrap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serko.Wiring.Implementation, Version=3.3.9.3154, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serko.Wiring.3.3.9\lib\net45\Serko.Wiring.Implementation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Swashbuckle.Core.5.2.1\lib\net40\Swashbuckle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.2\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.2\lib\net45\System.Web.Http.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.2\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Project_Readme.html" />
+    <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\VotifyRocksServiceWebHost - Web Deploy.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- REF OPEN -->
+    <ProjectReference Include="..\Votify.Rocks.Owin.SignalR.Bootstrap\Votify.Rocks.Owin.SignalR.Bootstrap.csproj">
+      <Project>{e008cade-afb6-4733-8c9c-853d003b9d46}</Project>
+      <Name>Votify.Rocks.Owin.SignalR.Bootstrap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Votify.Rocks.Owin.SignalR\Votify.Rocks.Owin.SignalR.csproj">
+      <Project>{fcede1f3-df27-4000-8bbe-1b637f7e2cf1}</Project>
+      <Name>Votify.Rocks.Owin.SignalR</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Votify.Rocks.Service.Bootstrap\Votify.Rocks.Service.Bootstrap.csproj">
+      <Name>Votify.Rocks.Service.Bootstrap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Votify.Rocks.Service.WebApi\Votify.Rocks.Service.WebApi.csproj">
+      <Name>Votify.Rocks.Service.WebApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Votify.Rocks.VoteSession.SignalR.Bootstrap\Votify.Rocks.VoteSession.SignalR.Bootstrap.csproj">
+      <Project>{57dd049a-2c21-4b2c-92f8-f6de1bebeced}</Project>
+      <Name>Votify.Rocks.VoteSession.SignalR.Bootstrap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Votify.Rocks.VoteSession.SignalR.Contract\Votify.Rocks.VoteSession.SignalR.Contract.csproj">
+      <Project>{1afb5fc6-9446-4570-bc92-3beea546b7e1}</Project>
+      <Name>Votify.Rocks.VoteSession.SignalR.Contract</Name>
+    </ProjectReference>
+    <!-- REF CLOSE -->
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>4747</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/VotifyRocks</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Serko.Services.WebHost.Core.3.10.3\build\Serko.Services.WebHost.Core.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Serko.Services.WebHost.Core.3.10.3\build\Serko.Services.WebHost.Core.props'))" />
+    <Error Condition="!Exists('..\packages\Serko.Services.WebHost.Core.3.10.3\build\Serko.Services.WebHost.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Serko.Services.WebHost.Core.3.10.3\build\Serko.Services.WebHost.Core.targets'))" />
+    <Error Condition="!Exists('..\packages\Serko.Services.WebHost.3.10.3\build\Serko.Services.WebHost.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Serko.Services.WebHost.3.10.3\build\Serko.Services.WebHost.props'))" />
+  </Target>
+  <Import Project="..\packages\Serko.Services.WebHost.Core.3.10.3\build\Serko.Services.WebHost.Core.targets" Condition="Exists('..\packages\Serko.Services.WebHost.Core.3.10.3\build\Serko.Services.WebHost.Core.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
