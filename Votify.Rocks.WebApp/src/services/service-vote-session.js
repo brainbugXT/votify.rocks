@@ -10,6 +10,7 @@ export const CreateVoteSession = (participant, description, signalRClientId) => 
     const queryStringParams = { description: description, signalRClientId: signalRClientId };
 
     const postData = {
+        email: participant.email,
         displayName: participant.displayName,
         isOrganizer: participant.isOrganizer,
         canVote: participant.canVote

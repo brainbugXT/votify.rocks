@@ -50,28 +50,28 @@ namespace Votify.Rocks.Service.Tests
         [TestCase(true, 20)]
         [TestCase(false, 21)]
         [ExpectedException(typeof(MaxParticipantsException))]
-        public void MaxParticipantsTests(bool canVote, int participantCount)
+        public async void MaxParticipantsTests(bool canVote, int participantCount)
         {
             var organizer = _underTest.CreateParticipant("Organizer", canVote);
-            var voteSession = _underTest.Create(organizer, "");
+            var voteSession = await _underTest.CreateAsync(organizer, "");
 
             for (int i = 0; i < participantCount; i++)
             {
                 var newParticipant = _underTest.CreateParticipant("Participant", true);
-                _underTest.Join(voteSession.SessionKey, newParticipant);
+                await _underTest.JoinAsync(voteSession.SessionKey, newParticipant);
             }
         }
 
         [Test]
-        public void ParticipantsTests()
+        public async void ParticipantsTests()
         {
             var organizer = _underTest.CreateParticipant("Organizer", false);
-            var voteSession = _underTest.Create(organizer, "");
+            var voteSession = await _underTest.CreateAsync(organizer, "");
 
             for (int i = 0; i < 20; i++)
             {
                 var newParticipant = _underTest.CreateParticipant("Participant", true);
-                _underTest.Join(voteSession.SessionKey, newParticipant);
+                await _underTest.JoinAsync(voteSession.SessionKey, newParticipant);
             }
 
             Assert.AreEqual(1, voteSession.Participants.Count(x => x.IsOrganizer));
@@ -82,7 +82,7 @@ namespace Votify.Rocks.Service.Tests
         public async Task VoteSessionsMustBeCaseInsesitive()
         {
             var organizer = _underTest.CreateParticipant("Organizer", false);
-            var voteSession = _underTest.Create(organizer, "");
+            var voteSession = await _underTest.CreateAsync(organizer, "");
 
             var voteSessionFromMemory = await _underTest.GetAsync(voteSession.SessionKey.ToLower());
 

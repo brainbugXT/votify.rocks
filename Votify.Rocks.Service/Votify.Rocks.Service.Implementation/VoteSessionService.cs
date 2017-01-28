@@ -23,7 +23,7 @@ namespace Votify.Rocks.Service
             _maxParticipants = maxParticipants;
         }
 
-        public VoteSession Create(Participant organizer, string description)
+        public async Task<VoteSession> CreateAsync(Participant organizer, string description)
         {
             var voteSessionKey = GenerateVoteSessionKey();
             organizer.IsOrganizer = true;
@@ -38,13 +38,13 @@ namespace Votify.Rocks.Service
 
             _memoryCacheObject.SetCachedObject(voteSessionKey, voteSessionObject);
 
-            _voteSessionStoreService.SaveVoteSessionAsync(voteSessionObject);
+            await _voteSessionStoreService.SaveVoteSessionAsync(voteSessionObject);
             return voteSessionObject;
         }
 
         public async Task<VoteSession> GetAsync(string sessionKey)
         {
-            var voteSession = await GetVoteSession(sessionKey);
+            var voteSession = await GetVoteSessionAsync(sessionKey);
             if (string.IsNullOrWhiteSpace(voteSession.SessionKey))
             {
                 voteSession = await _voteSessionStoreService.LoadVoteSessionAsync(sessionKey);
@@ -56,9 +56,9 @@ namespace Votify.Rocks.Service
             return voteSession;
         }
 
-        public async Task<VoteSessionJoinResult> Join(string sessionKey, Participant participant)
+        public async Task<VoteSessionJoinResult> JoinAsync(string sessionKey, Participant participant)
         {
-            var voteSession = await GetVoteSession(sessionKey);
+            var voteSession = await GetVoteSessionAsync(sessionKey);
             if (voteSession.Participants.Count(x => x.CanVote) >= _maxParticipants)
                 throw new MaxParticipantsException($"The vote session has reached the maximum participants of {_maxParticipants}");
 
@@ -66,7 +66,7 @@ namespace Votify.Rocks.Service
             participant.DisplayName = GenerateUniqueDisplayName(participant.DisplayName, participantDisplayNames);
             voteSession.Participants.Add(participant);
 
-            _voteSessionStoreService.SaveVoteSessionAsync(voteSession);
+            await _voteSessionStoreService.SaveVoteSessionAsync(voteSession);
 
             return new VoteSessionJoinResult
             {
@@ -75,15 +75,15 @@ namespace Votify.Rocks.Service
             };
         }
 
-        public async Task Open(string sessionKey, Guid participantUid)
+        public async Task OpenAsync(string sessionKey, Guid participantUid)
         {
-            var voteSession = await GetVoteSession(sessionKey);
+            var voteSession = await GetVoteSessionAsync(sessionKey);
             if (participantUid != voteSession.Organizer.Uid)
                 throw new UnauthorizedActionException("Only the vote session organizer can open the vote session");
 
             voteSession.OpenForVoting = true;
 
-            _voteSessionStoreService.SaveVoteSessionAsync(voteSession);
+            await _voteSessionStoreService.SaveVoteSessionAsync(voteSession);
         }
 
         public VoteSessionJoinResult ReJoin(string sessionKey, Guid participantUid)
@@ -97,22 +97,22 @@ namespace Votify.Rocks.Service
             };
         }
 
-        public async Task<Participant> Leave(string sessionKey, Guid participantUid)
+        public async Task<Participant> LeaveAsync(string sessionKey, Guid participantUid)
         {
-            var voteSession = await GetVoteSession(sessionKey);
+            var voteSession = await GetVoteSessionAsync(sessionKey);
             var participant = voteSession.Participants.FirstOrDefault(x => x.Uid == participantUid);
             if (participant == null) throw new ParticipantNotFoundException("Participant is not in the current vote session");
 
             voteSession.Participants = voteSession.Participants.Where(x => x.Uid != participantUid).ToList();
 
-            _voteSessionStoreService.SaveVoteSessionAsync(voteSession);
+            await _voteSessionStoreService.SaveVoteSessionAsync(voteSession);
 
             return participant;
         }
 
-        public async Task<VoteSession> CastVote(string sessionKey, Guid participantUid, int value)
+        public async Task<VoteSession> CastVoteAsync(string sessionKey, Guid participantUid, int value)
         {
-            var voteSession = await GetVoteSession(sessionKey);
+            var voteSession = await GetVoteSessionAsync(sessionKey);
             var participant = voteSession.Participants.FirstOrDefault(x => x.Uid == participantUid);
             if (participant == null) throw new ParticipantNotFoundException("Participant is not in the current vote session");
             if (!voteSession.OpenForVoting) throw new VoteSessionLockedException("This vote session is not open for voting");
@@ -125,27 +125,27 @@ namespace Votify.Rocks.Service
             if (voteTotal > 0)
                 voteSession.VoteAverage = voteTotal / participantsThatCanAndHasVoted.Length;
 
-            _voteSessionStoreService.SaveVoteSessionAsync(voteSession);
+            await _voteSessionStoreService.SaveVoteSessionAsync(voteSession);
 
             return voteSession;
         }
 
-        public async Task<VoteSession> ChangeParticipantName(string sessionKey, Guid participantUid, string newDiplayName)
+        public async Task<VoteSession> ChangeParticipantNameAsync(string sessionKey, Guid participantUid, string newDiplayName)
         {
-            var voteSession = await GetVoteSession(sessionKey);
+            var voteSession = await GetVoteSessionAsync(sessionKey);
             var participant = voteSession.Participants.FirstOrDefault(x => x.Uid == participantUid);
             if (participant == null) throw new ParticipantNotFoundException("Participant is not in the current vote session");
 
             participant.DisplayName = newDiplayName;
 
-            _voteSessionStoreService.SaveVoteSessionAsync(voteSession);
+            await _voteSessionStoreService.SaveVoteSessionAsync(voteSession);
 
             return voteSession;
         }
 
-        public async Task<VoteSession> PromoteParticipantToOrganizer(string sessionKey, Guid orgenizerUid, Guid participantUid)
+        public async Task<VoteSession> PromoteParticipantToOrganizerAsync(string sessionKey, Guid orgenizerUid, Guid participantUid)
         {
-            var voteSession = await GetVoteSession(sessionKey);
+            var voteSession = await GetVoteSessionAsync(sessionKey);
             if (voteSession.Organizer.Uid != orgenizerUid)
             {
                 throw new UnauthorizedActionException("You are not the organizer of this session");
@@ -162,20 +162,20 @@ namespace Votify.Rocks.Service
             organizer.IsOrganizer = false;
             participant.IsOrganizer = true;
 
-            _voteSessionStoreService.SaveVoteSessionAsync(voteSession);
+            await _voteSessionStoreService.SaveVoteSessionAsync(voteSession);
 
             return voteSession;
         }
 
-        public async Task<Participant> KickParticipant(string sessionKey, Guid orgenizerUid, Guid participantUid)
+        public async Task<Participant> KickParticipantAsync(string sessionKey, Guid orgenizerUid, Guid participantUid)
         {
-            var voteSession = await GetVoteSession(sessionKey);
+            var voteSession = await GetVoteSessionAsync(sessionKey);
             if (voteSession.Organizer.Uid != orgenizerUid)
             {
                 throw new UnauthorizedAccessException("You are not the organizer of this session");
             }
 
-            return await Leave(sessionKey, participantUid);
+            return await LeaveAsync(sessionKey, participantUid);
         }
 
         public Participant CreateParticipant(string displayName, bool canVote)
@@ -189,7 +189,7 @@ namespace Votify.Rocks.Service
             };
         }
 
-        private async Task<VoteSession> GetVoteSession(string sessionKey)
+        private async Task<VoteSession> GetVoteSessionAsync(string sessionKey)
         {
             var voteSession = _memoryCacheObject.GetCachedObject<VoteSession>(sessionKey, null);
             if (voteSession == null)

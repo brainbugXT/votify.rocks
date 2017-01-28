@@ -6,16 +6,16 @@ namespace Votify.Rocks.Service
 {
     public interface IVoteSessionService
     {
-        VoteSession Create(Participant organizer, string description);
+        Task<VoteSession> CreateAsync(Participant organizer, string description);
         Task<VoteSession> GetAsync(string sessionKey);
-        Task<VoteSessionJoinResult> Join(string sessionKey, Participant participant);
+        Task<VoteSessionJoinResult> JoinAsync(string sessionKey, Participant participant);
         VoteSessionJoinResult ReJoin(string sessionKey, Guid participantUid);
-        Task<Participant> Leave(string sessionKey, Guid participantUid);
-        Task<VoteSession> CastVote(string sessionKey, Guid participantUid, int value);
+        Task<Participant> LeaveAsync(string sessionKey, Guid participantUid);
+        Task<VoteSession> CastVoteAsync(string sessionKey, Guid participantUid, int value);
         Participant CreateParticipant(string displayName, bool canVote);
-        Task<VoteSession> ChangeParticipantName(string sessionKey, Guid participantUid, string newDiplayName);
-        Task<VoteSession> PromoteParticipantToOrganizer(string sessionKey, Guid orgenizerUid, Guid participantUid);
-        Task<Participant> KickParticipant(string sessionKey, Guid orgenizerUid, Guid participantUid);
-        Task Open(string sessionKey, Guid orgenizerUid);
+        Task<VoteSession> ChangeParticipantNameAsync(string sessionKey, Guid participantUid, string newDiplayName);
+        Task<VoteSession> PromoteParticipantToOrganizerAsync(string sessionKey, Guid orgenizerUid, Guid participantUid);
+        Task<Participant> KickParticipantAsync(string sessionKey, Guid orgenizerUid, Guid participantUid);
+        Task OpenAsync(string sessionKey, Guid orgenizerUid);
     }
 }

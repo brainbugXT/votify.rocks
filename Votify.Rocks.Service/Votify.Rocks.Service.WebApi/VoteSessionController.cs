@@ -41,9 +41,9 @@ namespace Votify.Rocks.Service.WebApi
         /// <param name="description">Describe the purpose of this vote session</param>
         [Route("Create")]
         [HttpPost]
-        public VoteSessionDto Create(Participant participant, string signalRClientId="", string description="")
+        public async Task<VoteSessionDto> Create(Participant participant, string signalRClientId="", string description="")
         {
-            var voteSession = _voteSessionService.Create(participant, description);
+            var voteSession = await _voteSessionService.CreateAsync(participant, description);
             if (!string.IsNullOrWhiteSpace(signalRClientId))
             {
                 _signalRVoteSessionBroadcaster.JoinVoteSessionGroup(signalRClientId, voteSession.SessionKey);
@@ -61,7 +61,7 @@ namespace Votify.Rocks.Service.WebApi
         [HttpPost]
         public async Task<VoteSessionJoinResult> Join(string sessionKey, Participant participant, string signalRClientId = "")
         {       
-            var joinResult = await _voteSessionService.Join(sessionKey, participant);
+            var joinResult = await _voteSessionService.JoinAsync(sessionKey, participant);
             _signalRVoteSessionBroadcaster.BroadcastParticipantJoined(joinResult.Votesession.SessionKey, participant);
             if (!string.IsNullOrWhiteSpace(signalRClientId))
                 _signalRVoteSessionBroadcaster.JoinVoteSessionGroup(signalRClientId, joinResult.Votesession.SessionKey);
@@ -77,7 +77,7 @@ namespace Votify.Rocks.Service.WebApi
         [HttpPost]
         public async Task Open(string sessionKey, Guid participantUid)
         {
-            await _voteSessionService.Open(sessionKey, participantUid);
+            await _voteSessionService.OpenAsync(sessionKey, participantUid);
             var voteSession = await _voteSessionService.GetAsync(sessionKey);
             _signalRVoteSessionBroadcaster.BroadcastVoteSessionOpen(voteSession.SessionKey);
         }
@@ -92,7 +92,7 @@ namespace Votify.Rocks.Service.WebApi
         [HttpPost]
         public async Task Leave(string sessionKey, Guid participantUid, string signalRClientId = "")
         {
-            var participant = await _voteSessionService.Leave(sessionKey, participantUid);
+            var participant = await _voteSessionService.LeaveAsync(sessionKey, participantUid);
             var voteSession = await _voteSessionService.GetAsync(sessionKey);
             if (!string.IsNullOrWhiteSpace(signalRClientId))
                 _signalRVoteSessionBroadcaster.LeaveVoteSessionGroup(signalRClientId, voteSession.SessionKey);
@@ -110,7 +110,7 @@ namespace Votify.Rocks.Service.WebApi
         [HttpPost]
         public async Task<VoteSessionDto> Vote(string sessionKey, Guid participantUid, int value)
         {
-            var voteSession = await _voteSessionService.CastVote(sessionKey, participantUid, value);
+            var voteSession = await _voteSessionService.CastVoteAsync(sessionKey, participantUid, value);
             _signalRVoteSessionBroadcaster.BroadcastParticipantVoted(voteSession.SessionKey, participantUid, value, voteSession.VoteAverage);
             return VoteSessionDto.Map(voteSession);
         }

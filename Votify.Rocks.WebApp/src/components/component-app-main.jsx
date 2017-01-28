@@ -74,6 +74,10 @@ const  VoteApp = createClass ({
             this.props.onVoteSessionKeyChange(event.target.value);
         },
 
+        handleEmailChange (event) {
+            this.props.onEmailChange(event.target.value);
+        },
+
         handleDisplayNameChange(event) {
             this.props.onDisplayNameChange(event.target.value);
         },
@@ -85,7 +89,7 @@ const  VoteApp = createClass ({
         render () {
             return (
             <div>
-                <SessionAccess session={this.props.session} onSessionKeyChange={this.handleSessionKeyChange} onDisplayNameChange={this.handleDisplayNameChange} onCreateClick={this.handleOnCreateClick} onJoinClick={this.handleOnJoinClick} />
+                <SessionAccess session={this.props.session} onSessionKeyChange={this.handleSessionKeyChange} onEmailChange={this.handleEmailChange} onDisplayNameChange={this.handleDisplayNameChange} onCreateClick={this.handleOnCreateClick} onJoinClick={this.handleOnJoinClick} />
                 <VoteSession session={this.props.session} voteSession={this.props.voteSession} onVoteCast={this.handleOnVoteCast} onLeaveSession={this.handleOnLeaveClick} onOpenSession={this.handleOnSessionOpenClick}/>
                 <Snackbar open={this.props.notification.open} message={this.props.notification.message} onRequestClose={this.handleNotificationRequestToClose} autoHideDuration={2000} />
             </div>)
@@ -131,6 +135,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     },
     onDisplayNameChange (newName) {
         dispatch(actions.DisplayNameChanged(newName));
+    },
+    onEmailChange (newEmail) {
+        dispatch(actions.EmailChanged(newEmail));
     },
     onVoteSessionOpenSignal () {
         dispatch(actions.VoteSessionOpenSignal());

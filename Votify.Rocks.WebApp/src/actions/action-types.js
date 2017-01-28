@@ -11,6 +11,7 @@ export default {
     voteSessionLeft: 'VOTE_SESSION_LEFT',
     sessionKeyChanged: 'SESSION_KEY-CHANGED',
     displayNameChanged: 'DISPLAY_NAME_CHANGED',
+    emailChanged: 'EMAIL_CHANGED',
     castVote: 'CAST_VOTE',
     voteCast: 'VOTE_CAST',
     apiError: 'API_ERROR',

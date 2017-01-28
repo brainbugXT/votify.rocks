@@ -38,7 +38,7 @@ class SessionAccess extends React.Component {
     };
 
     render () {
-        const {session, onSessionKeyChange, onDisplayNameChange, onCreateClick, onJoinClick} = this.props;
+        const {session, onSessionKeyChange, onDisplayNameChange, onEmailChange, onCreateClick, onJoinClick} = this.props;
 
             const actions = [
             <FlatButton
@@ -64,6 +64,7 @@ class SessionAccess extends React.Component {
                 <RaisedButton label="Join" onTouchTap={onJoinClick} primary={true} />
             </div>
             <Dialog title="Create a new vote session" actions={actions} modal={true} open={this.state.open} onRequestClose={this.handleClose}>
+                <TextField floatingLabelText="Email" floatingLabelFixed={true} hintText="name@domain.com" value={session.email} onChange={onEmailChange} fullWidth={true} /><br/>
                 <TextField floatingLabelText="Nickname" floatingLabelFixed={true} hintText={session.randomName} value={session.displayName} onChange={onDisplayNameChange} fullWidth={true} /><br/>
                 <TextField hintText="Describe your vote session in a few words" floatingLabelText="Description" fullWidth={true} multiLine={true} rows={2} ref={ ref => this.descriptionTextField = ref } /><br />
                 <Toggle label="I don't need to vote" labelPosition="right" style={styles.toggle} />

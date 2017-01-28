@@ -17,6 +17,7 @@ export const VoteSessionCreate = (participantName, description) => {
         dispatch(actionCreators.createVoteSession(session.displayName, 'description'));
         const name = session.displayName.trim()
         const participant = {
+            email: session.email.trim(),
             displayName: name.length ? name : session.randomName,
             isOrganizer: true,
             canVote: true
@@ -110,6 +111,12 @@ export const LeaveVoteSession = () => {
 export const DisplayNameChanged = (newName) => {
     return (dispatch, getState, args) => {
         dispatch(actionCreators.displayNameChanged(newName));
+    };
+}
+
+export const EmailChanged = (newEmail) => {
+    return (dispatch, getState, args) => {
+        dispatch(actionCreators.emailChanged(newEmail));
     };
 }
 

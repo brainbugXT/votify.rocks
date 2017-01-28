@@ -61,6 +61,11 @@ export const displayNameChanged = (newName) => ({
         newName: newName
 });
 
+export const emailChanged = (newEmail) => ({
+        type: actionType.emailChanged,
+        newEmail: newEmail
+});
+
 export const sessionKeyChanged = (newKey) => ({
         type: actionType.sessionKeyChanged,
         newKey: newKey

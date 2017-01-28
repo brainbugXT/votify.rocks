@@ -4,6 +4,7 @@ const initialState = {
     key: '',
     participantUid: null,
     displayName: '',
+    email: '',
     voteValue: 0,
     randomName: ''
 };
@@ -15,6 +16,8 @@ export default (state=initialState, action) => {
             return {...state, key: action.newKey};
         case actionType.displayNameChanged:
             return {...state, displayName: action.newName};
+        case actionType.emailChanged:
+            return {...state, email: action.newEmail};
         case actionType.voteSessionJoined:
             return {...state, participantUid: action.participantUid}
         case actionType.voteSessionCreated:
