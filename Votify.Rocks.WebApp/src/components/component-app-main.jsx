@@ -8,7 +8,7 @@ import Snackbar from 'material-ui/Snackbar';
 //import $ from 'jquery'
 import 'ms-signalr-client'
 
-require('!style!css!sass!../scss/style.scss');
+require('!style-loader!css-loader!sass-loader!../scss/style.scss');
 
 const  VoteApp = createClass ({
     componentDidMount () {

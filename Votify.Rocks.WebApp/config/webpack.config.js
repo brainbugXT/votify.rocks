@@ -21,7 +21,7 @@ module.exports = (env) => {
     },
     context: join(root, 'src'),
     resolve: {
-      extensions: ['', '.js', '.json', '.jsx'],
+      extensions: ['.js', '.json', '.jsx'],
     },
     module: {
       loaders: [
