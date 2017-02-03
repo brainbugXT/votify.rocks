@@ -27,7 +27,8 @@ export const VoteSessionCreate = (participantName, description) => {
         .then((votesession) => {
             dispatch(actionCreators.voteSessionCreated(votesession));
         })
-        .catch((error) => {
+        .catch((error, a, b) => {
+            console.log(error, a, b);
             dispatch(actionCreators.apiError(error));
         });
     };

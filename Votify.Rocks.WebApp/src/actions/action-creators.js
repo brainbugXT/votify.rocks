@@ -82,10 +82,11 @@ export const voteCast = () => ({
         type: actionType.voteCast,
 });
 
-export const apiError = (error) => ({
+export const apiError = (error) => {
+        return {
         type: actionType.apiError,
         error: error
-});
+}};
 
 export const voteSessionOpenSignal = () => ({
         type: actionType.voteSessionOpenSignal

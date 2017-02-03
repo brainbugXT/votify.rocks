@@ -29,7 +29,7 @@ const post = (url, params, data) => {
     })
     .then(function (response) {
         if(!response.ok){
-            throw response.status + ':' + response.statusText;
+            throw new Error(response.status + ':' + response.statusText);
         }
         if(response.status === 204){
             return {};

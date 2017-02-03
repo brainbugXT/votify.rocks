@@ -22,18 +22,11 @@ const VoteSession = ({session, voteSession, onVoteCast, onLeaveSession, onOpenSe
                 <div className="app-bar">
                     <AppBar
                         title={session.displayName}
-                        iconElementLeft={<IconButton onTouchTap={onLeaveSession}><NavigationCloseIcon /></IconButton>}
+                        iconElementLeft={
+                            <IconButton>{voteSession.voteAverage ? <MailIcon /> : null }</IconButton>
+                        }
                         iconElementRight={
-                        <IconMenu
-                            iconButtonElement={
-                            <IconButton><MoreVertIcon /></IconButton>
-                            }
-                            targetOrigin={{horizontal: 'right', vertical: 'top'}}
-                            anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-                        >
-                            <MenuItem leftIcon={<MailIcon />} primaryText="Share result" />
-                            <MenuItem leftIcon={<ExitAppIcon />} primaryText="Leave session" onTouchTap={onLeaveSession} />
-                        </IconMenu>
+                            <IconButton onTouchTap={onLeaveSession}><ExitAppIcon /></IconButton>
                         }
                     />
                 </div>

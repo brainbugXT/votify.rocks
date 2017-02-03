@@ -22,7 +22,7 @@ namespace Votify.Rocks.Service
         {
             var voteSessionEntity = new VoteSessionEntity
             {
-                RowKey = voteSession.SessionKey,
+                RowKey = voteSession.SessionKey.ToUpper(),
                 PartitionKey = voteSession.Organizer.Email,
                 VoteSessionJSON = JsonConvert.SerializeObject(voteSession)
             };
@@ -31,7 +31,11 @@ namespace Votify.Rocks.Service
 
         public async Task<VoteSession> LoadVoteSessionAsync(string voteSessionKey)
         {
-            var voteSessionEntity = await _voteSessionStore.ReadAsync(voteSessionKey);
+            var voteSessionEntity = await _voteSessionStore.ReadAsync(voteSessionKey.ToUpper());
+            if (voteSessionEntity == null)
+            {
+                return null;
+            }
             var voteSession = JsonConvert.DeserializeObject<VoteSession>(voteSessionEntity.VoteSessionJSON);
             return voteSession;
         }

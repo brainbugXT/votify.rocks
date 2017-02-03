@@ -71,7 +71,7 @@ const  VoteApp = createClass ({
         },
 
         handleSessionKeyChange (event) {
-            this.props.onVoteSessionKeyChange(event.target.value);
+            this.props.onVoteSessionKeyChange((event.target.value || '').toUpperCase());
         },
 
         handleEmailChange (event) {
@@ -89,9 +89,27 @@ const  VoteApp = createClass ({
         render () {
             return (
             <div>
-                <SessionAccess session={this.props.session} onSessionKeyChange={this.handleSessionKeyChange} onEmailChange={this.handleEmailChange} onDisplayNameChange={this.handleDisplayNameChange} onCreateClick={this.handleOnCreateClick} onJoinClick={this.handleOnJoinClick} />
-                <VoteSession session={this.props.session} voteSession={this.props.voteSession} onVoteCast={this.handleOnVoteCast} onLeaveSession={this.handleOnLeaveClick} onOpenSession={this.handleOnSessionOpenClick}/>
-                <Snackbar open={this.props.notification.open} message={this.props.notification.message} onRequestClose={this.handleNotificationRequestToClose} autoHideDuration={2000} />
+                <SessionAccess 
+                    session={this.props.session} 
+                    onSessionKeyChange={this.handleSessionKeyChange} 
+                    onEmailChange={this.handleEmailChange} 
+                    onDisplayNameChange={this.handleDisplayNameChange} 
+                    onCreateClick={this.handleOnCreateClick} 
+                    onJoinClick={this.handleOnJoinClick} 
+                />
+                <VoteSession 
+                    session={this.props.session} 
+                    voteSession={this.props.voteSession} 
+                    onVoteCast={this.handleOnVoteCast} 
+                    onLeaveSession={this.handleOnLeaveClick} 
+                    onOpenSession={this.handleOnSessionOpenClick}
+                />
+                <Snackbar 
+                    open={this.props.notification.open} 
+                    message={this.props.notification.message} 
+                    onRequestClose={this.handleNotificationRequestToClose} 
+                    autoHideDuration={4000} 
+                />
             </div>)
         }
   });
