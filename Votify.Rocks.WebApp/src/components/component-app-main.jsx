@@ -78,6 +78,14 @@ const  VoteApp = createClass ({
             this.props.onEmailChange(event.target.value);
         },
 
+        handleDescriptionChange (event) {
+            this.props.onDescriptionChange(event.target.value);
+        },
+
+        handleCanVoteChange (event) {
+            this.props.onCanVoteChange(event.target.value);
+        },
+
         handleDisplayNameChange(event) {
             this.props.onDisplayNameChange(event.target.value);
         },
@@ -93,7 +101,9 @@ const  VoteApp = createClass ({
                     session={this.props.session} 
                     onSessionKeyChange={this.handleSessionKeyChange} 
                     onEmailChange={this.handleEmailChange} 
-                    onDisplayNameChange={this.handleDisplayNameChange} 
+                    onDisplayNameChange={this.handleDisplayNameChange}
+                    onDescriptionChange={this.handleDescriptionChange}
+                    onCanVoteChange={this.handleCanVoteChange}
                     onCreateClick={this.handleOnCreateClick} 
                     onJoinClick={this.handleOnJoinClick} 
                 />
@@ -156,6 +166,12 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     },
     onEmailChange (newEmail) {
         dispatch(actions.EmailChanged(newEmail));
+    },
+    onDescriptionChange (newDescription) {
+        dispatch(actions.DescriptionChanged(newDescription));
+    },
+    onCanVoteChange (newCanVoteValue) {
+        dispatch(actions.CanVoteChanged(newCanVoteValue));
     },
     onVoteSessionOpenSignal () {
         dispatch(actions.VoteSessionOpenSignal());

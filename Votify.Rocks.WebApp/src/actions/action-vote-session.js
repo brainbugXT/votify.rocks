@@ -13,17 +13,18 @@ export const VoteSessionCreate = (participantName, description) => {
     return (dispatch, getState, args) => {
         var state = getState();
         const {signalRClient, session} = state;
+        const description =  (session.description.trim() || 'noney');
 
-        dispatch(actionCreators.createVoteSession(session.displayName, 'description'));
+        dispatch(actionCreators.createVoteSession(session.displayName, description));
         const name = session.displayName.trim()
         const participant = {
             email: session.email.trim(),
             displayName: name.length ? name : session.randomName,
             isOrganizer: true,
-            canVote: true
+            canVote: session.canVote,
         };
 
-        api.CreateVoteSession(participant, 'description', signalRClient)
+        api.CreateVoteSession(participant, description, signalRClient)
         .then((votesession) => {
             dispatch(actionCreators.voteSessionCreated(votesession));
         })
@@ -112,6 +113,18 @@ export const LeaveVoteSession = () => {
 export const DisplayNameChanged = (newName) => {
     return (dispatch, getState, args) => {
         dispatch(actionCreators.displayNameChanged(newName));
+    };
+}
+
+export const DescriptionChanged = (newDescription) => {
+    return (dispatch, getState, args) => {
+        dispatch(actionCreators.descriptionChanged(newDescription));
+    };
+}
+
+export const CanVoteChanged = (newCanVoteValue) => {
+    return (dispatch, getState, args) => {
+        dispatch(actionCreators.canVoteChanged(newCanVoteValue));
     };
 }
 

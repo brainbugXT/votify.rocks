@@ -12,6 +12,7 @@ import NavigationCloseIcon from 'material-ui/svg-icons/navigation/close';
 import ExitAppIcon from 'material-ui/svg-icons/action/exit-to-app'
 import LockOpenIcon from 'material-ui/svg-icons/action/lock-open'
 import FloatingActionButton from 'material-ui/FloatingActionButton';
+import Paper from 'material-ui/Paper';
 
 const VoteSession = ({session, voteSession, onVoteCast, onLeaveSession, onOpenSession, notification}) => {
 
@@ -21,7 +22,7 @@ const VoteSession = ({session, voteSession, onVoteCast, onLeaveSession, onOpenSe
             <div className="vote-session-container">
                 <div className="app-bar">
                     <AppBar
-                        title={session.displayName}
+                        title={session.displayName || session.randomName}
                         iconElementLeft={
                             <IconButton>{voteSession.voteAverage ? <MailIcon /> : null }</IconButton>
                         }
@@ -33,6 +34,11 @@ const VoteSession = ({session, voteSession, onVoteCast, onLeaveSession, onOpenSe
                 <div className="session-components">
                     <Gage title={voteSession.sessionKey} value={voteSession.voteAverage} voteValue={session.voteValue}/>
                     <VoteButtons voteValue={session.voteValue} voteSessionOpen={voteSession.openForVoting} onVoteCast={onVoteCast} />
+                    {
+                        session.description.trim()
+                        ? <Paper style={{padding: 10, margin: 20,}}>{session.description}</Paper>
+                        : null
+                    }
                     <div className="participant-list">
                         <Participants  participants={voteSession.participants} voteValue={session.voteValue} />
                     </div>

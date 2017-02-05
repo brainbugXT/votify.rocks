@@ -12,6 +12,8 @@ export default {
     sessionKeyChanged: 'SESSION_KEY-CHANGED',
     displayNameChanged: 'DISPLAY_NAME_CHANGED',
     emailChanged: 'EMAIL_CHANGED',
+    descriptionChanged: 'DESCRIPTION_CHANGED',
+    canVoteChanged: 'CAN_VOTE_CHANGED',
     castVote: 'CAST_VOTE',
     voteCast: 'VOTE_CAST',
     apiError: 'API_ERROR',

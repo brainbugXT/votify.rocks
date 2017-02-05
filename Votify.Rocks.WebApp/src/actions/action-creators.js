@@ -66,6 +66,16 @@ export const emailChanged = (newEmail) => ({
         newEmail: newEmail
 });
 
+export const descriptionChanged = (newDescription) => ({
+        type: actionType.descriptionChanged,
+        newDescription: newDescription
+});
+
+export const canVoteChanged = (newCanVoteValue) => ({
+        type: actionType.canVoteChanged,
+        newCanVoteValue: newCanVoteValue
+});
+
 export const sessionKeyChanged = (newKey) => ({
         type: actionType.sessionKeyChanged,
         newKey: newKey

@@ -6,7 +6,9 @@ const initialState = {
     displayName: '',
     email: '',
     voteValue: 0,
-    randomName: ''
+    randomName: '',
+    canVote: true,
+    description: '',
 };
 
 export default (state=initialState, action) => {
@@ -18,6 +20,10 @@ export default (state=initialState, action) => {
             return {...state, displayName: action.newName};
         case actionType.emailChanged:
             return {...state, email: action.newEmail};
+        case actionType.descriptionChanged:
+            return {...state, description: action.newDescription};
+        case actionType.canVoteChanged:
+            return {...state, canVote: action.newCanVoteValue};
         case actionType.voteSessionJoined:
             return {...state, participantUid: action.participantUid}
         case actionType.voteSessionCreated:
@@ -27,7 +33,7 @@ export default (state=initialState, action) => {
         case actionType.castVote:
             return {...state, voteValue: action.voteValue}
         case actionType.randomNameGenerated:
-        return {...state, randomName: action.randomName}
+            return {...state, randomName: action.randomName}
         default:
             return state
     }
