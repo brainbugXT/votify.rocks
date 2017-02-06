@@ -103,17 +103,21 @@ class SessionAccess extends React.Component {
         if(session && !session.participantUid) {
         return (
         <div>
-            <div className="session-access-container">
-                <TextField floatingLabelText="Vote session Key" 
-                    value={session.key} onChange={onSessionKeyChange} 
-                    errorText={this.state.joinKeyErrorText} 
-                    floatingLabelStyle={{left: 70}} 
-                    floatingLabelShrinkStyle={{left:80}} 
-                    inputStyle={{textAlign: 'center'}} 
-                    />
-                    <br/>
-                <RaisedButton label="Join" onTouchTap={() => this.handleJoinClick()} primary={true} />
-            </div>
+            {
+                !this.state.createDialogOpen
+                ? <div className="session-access-container">
+                    <TextField floatingLabelText="Vote session Key" 
+                        value={session.key} onChange={onSessionKeyChange} 
+                        errorText={this.state.joinKeyErrorText} 
+                        floatingLabelStyle={{left: 70}} 
+                        floatingLabelShrinkStyle={{left:80}} 
+                        inputStyle={{textAlign: 'center'}} 
+                        />
+                        <br/>
+                    <RaisedButton label="Join" onTouchTap={() => this.handleJoinClick()} primary={true} />
+                </div>
+                : null
+            }
             <Dialog 
                 actions={joinActions} 
                 modal={true} 
@@ -129,25 +133,31 @@ class SessionAccess extends React.Component {
                     fullWidth={true} 
                     />
             </Dialog>
-            <CreateVoteSession 
-                open={this.state.createDialogOpen}
-                emailHintText={emailHintText}
-                emailErrorText={this.state.emailErrorText} 
-                session={session} 
-                onDisplayNameChange={onDisplayNameChange}
-                onEmailChange={onEmailChange}
-                onDescriptionChange={onDescriptionChange} 
-                onCanVoteChange={onCanVoteChange}
-                onRequestClose={() => this.handleCreateDialogClose()}
-                onCancel={() => this.handleCreateDialogCancel()}
-                validateEmail={this.validateEmail}
-                />
-            <FloatingActionButton 
-                className="floating-create-button" 
-                secondary={true} 
-                onTouchTap={() => {this.handleCreateDialogOpen()}}>
-                <ContentAdd />
-            </FloatingActionButton>
+            <div className="session-access-create-container">
+                <CreateVoteSession 
+                    open={this.state.createDialogOpen}
+                    emailHintText={emailHintText}
+                    emailErrorText={this.state.emailErrorText} 
+                    session={session} 
+                    onDisplayNameChange={onDisplayNameChange}
+                    onEmailChange={onEmailChange}
+                    onDescriptionChange={onDescriptionChange} 
+                    onCanVoteChange={onCanVoteChange}
+                    onRequestClose={() => this.handleCreateDialogClose()}
+                    onCancel={() => this.handleCreateDialogCancel()}
+                    validateEmail={this.validateEmail}
+                    />
+                </div>
+                {
+                    !this.state.createDialogOpen
+                    ? <FloatingActionButton 
+                        className="floating-create-button" 
+                        secondary={true} 
+                        onTouchTap={() => {this.handleCreateDialogOpen()}}>
+                        <ContentAdd />
+                    </FloatingActionButton>
+                    : null
+                }
         </div>
         )}
 

@@ -52,91 +52,90 @@ export class CreateVoteSession extends React.Component {
 
     render(){
         const {open, onRequestClose, onCancel, session, onDisplayNameChange, onEmailChange, onDescriptionChange, onCanVoteChange, emailErrorText, emailHintText, validateEmail,} = this.props;
-        const createActions = [
-            <FlatButton
-                label="Cancel"
-                primary={false}
-                keyboardFocused={false}
-                onTouchTap={onCancel}
-            />,
-            <FlatButton
-                label={this.state.nextButtonText}
-                primary={true}
-                keyboardFocused={false}
-                onTouchTap={this.handleDialogNextClick}
-            />,
-            ];
+
+        if(!open){
+            return null;
+        }
 
         return (
-                <Dialog 
-                    actions={createActions} modal={true} 
-                    open={open} 
-                    onRequestClose={onRequestClose}
-                    contentStyle={{maxWidth: 600, width: '100%',}}
-                    iconContainerStyle={{backgroundColor: 'red'}}
+            <div>
+                <Stepper
+                    activeStep={this.state.stepIndex}
+                    linear={false}
+                    orientation="vertical"
                     >
-                    <Stepper
-                        activeStep={this.state.stepIndex}
-                        linear={false}
-                        orientation="vertical"
-                        >
-                        <Step >
-                            <StepButton onTouchTap={() => this.handleJumpToStep(0)}>
-                            Email address
-                            </StepButton>
-                            <StepContent>
-                                <TextField 
-                                    floatingLabelText="Email" 
-                                    floatingLabelFixed={true} 
-                                    hintText={emailHintText} 
-                                    value={session.email} 
-                                    onChange={onEmailChange} 
-                                    fullWidth={true} 
-                                    errorText={emailErrorText} 
-                                    />
-                            </StepContent>
-                        </Step>
-                        <Step>
-                            <StepButton onTouchTap={() => this.handleJumpToStep(1)}>
-                            Nickname
-                            </StepButton>
-                            <StepContent>
-                                <TextField 
-                                    floatingLabelText="Nickname" 
-                                    floatingLabelFixed={true} 
-                                    hintText={session.randomName} 
-                                    value={session.displayName} 
-                                    onChange={onDisplayNameChange} 
-                                    fullWidth={true} 
-                                    />
-                            </StepContent>
-                        </Step>
-                        <Step>
-                            <StepButton onTouchTap={() => this.handleJumpToStep(2)}>
-                            Session description
-                            </StepButton>
-                            <StepContent>
-                                <TextField 
-                                    hintText="Describe your vote session in a few words" 
-                                    floatingLabelText="Description" 
-                                    fullWidth={true} 
-                                    multiLine={true} 
-                                    rows={2}
-                                    value={session.description}
-                                    onChange={onDescriptionChange}
-                                    />
-                            </StepContent>
-                        </Step>
-                        <Step>
-                            <StepButton onTouchTap={() => this.handleJumpToStep(3)}>
-                            Voting options
-                            </StepButton>
-                            <StepContent>
-                                <Toggle label="I don't need to vote" labelPosition="right" style={styles.toggle} />
-                            </StepContent>
-                        </Step>
-                        </Stepper>
-                </Dialog>
+                    <Step >
+                        <StepButton onTouchTap={() => this.handleJumpToStep(0)}>
+                        Email address
+                        </StepButton>
+                        <StepContent>
+                            <TextField 
+                                ref={(e) => this.emailInput = e}
+                                floatingLabelText="" 
+                                floatingLabelFixed={true} 
+                                hintText={emailHintText} 
+                                value={session.email} 
+                                onChange={onEmailChange} 
+                                fullWidth={true} 
+                                errorText={emailErrorText} 
+                                />
+                        </StepContent>
+                    </Step>
+                    <Step>
+                        <StepButton onTouchTap={() => this.handleJumpToStep(1)}>
+                        Nickname
+                        </StepButton>
+                        <StepContent>
+                            <TextField 
+                                floatingLabelText="" 
+                                floatingLabelFixed={true} 
+                                hintText={session.randomName} 
+                                value={session.displayName} 
+                                onChange={onDisplayNameChange} 
+                                fullWidth={true} 
+                                />
+                        </StepContent>
+                    </Step>
+                    <Step>
+                        <StepButton onTouchTap={() => this.handleJumpToStep(2)}>
+                        Session description
+                        </StepButton>
+                        <StepContent>
+                            <TextField 
+                                hintText="Describe your vote session in a few words" 
+                                floatingLabelText="" 
+                                 floatingLabelFixed={true}
+                                fullWidth={true} 
+                                multiLine={true} 
+                                rows={2}
+                                value={session.description}
+                                onChange={onDescriptionChange}
+                                />
+                        </StepContent>
+                    </Step>
+                    <Step>
+                        <StepButton onTouchTap={() => this.handleJumpToStep(3)}>
+                        Voting options
+                        </StepButton>
+                        <StepContent>
+                            <Toggle label="I don't need to vote" labelPosition="right" style={styles.toggle} />
+                        </StepContent>
+                    </Step>
+                    </Stepper>
+                    <div className="action-buttons"></div>
+                    <FlatButton
+                        label="Cancel"
+                        primary={false}
+                        keyboardFocused={false}
+                        onTouchTap={onCancel}
+                    />
+                    <FlatButton
+                        label={this.state.nextButtonText}
+                        primary={true}
+                        keyboardFocused={false}
+                        onTouchTap={this.handleDialogNextClick}
+                    />
+                </div>
         )
     }
     };

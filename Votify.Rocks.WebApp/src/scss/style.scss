@@ -12,6 +12,16 @@ body{
     text-align: center;
 }
 
+.session-access-create-container {
+    position: relative;
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
+    .action-buttons {
+        padding: 15px;
+    }
+}
+
 .floating-create-button,
 .floating-start-session-button{
     margin-right: 30px;
