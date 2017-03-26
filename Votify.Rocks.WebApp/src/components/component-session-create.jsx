@@ -72,7 +72,7 @@ export class CreateVoteSession extends React.Component {
         }
 
         return (
-            <div>
+            <div style={{minHeight: 400}}>
                 <Stepper
                     activeStep={this.state.stepIndex}
                     linear={false}

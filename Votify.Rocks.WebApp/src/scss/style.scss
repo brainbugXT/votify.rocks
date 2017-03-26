@@ -15,7 +15,7 @@ body{
 .session-access-create-container {
     animation-name: cancelCreateSessionAnimation;
     animation-duration: 500ms;
-    position: fixed;
+    position: absolute;
     text-align: center;
     width: 100%;
     bottom: 70px;
@@ -34,6 +34,7 @@ body{
     position: relative;
     margin: auto;
     max-width: 400px;
+    overflow-y: scroll;
 }
 
 .floating-create-button{
