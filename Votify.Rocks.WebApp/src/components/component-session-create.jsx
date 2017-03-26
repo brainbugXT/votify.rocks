@@ -14,6 +14,7 @@ const styles = {
     marginTop: 16,
   },
 };
+const ENTER_KEY_CODE = 13;
 
 export class CreateVoteSession extends React.Component { 
     constructor(props) {
@@ -24,6 +25,7 @@ export class CreateVoteSession extends React.Component {
          };
          this.handleDialogNextClick = this.handleDialogNextClick.bind(this);
          this.handleJumpToStep = this.handleJumpToStep.bind(this);
+         this.handleEnterKey = this.handleEnterKey.bind(this);
     };
 
     handleDialogNextClick() {
@@ -43,6 +45,18 @@ export class CreateVoteSession extends React.Component {
         }
         
     }
+
+    handleEnterKey(e) {
+        if(e.keyCode === ENTER_KEY_CODE){
+            this.handleDialogNextClick();
+        }
+    }
+
+    focusInputField(textInput) {
+        if(textInput){
+            textInput.focus();
+        }
+    };
 
     handleJumpToStep(step) {
         if(this.props.validateEmail()){
@@ -70,7 +84,7 @@ export class CreateVoteSession extends React.Component {
                         </StepButton>
                         <StepContent>
                             <TextField 
-                                ref={(e) => this.emailInput = e}
+                                ref={this.focusInputField}
                                 floatingLabelText="" 
                                 floatingLabelFixed={true} 
                                 hintText={emailHintText} 
@@ -78,6 +92,7 @@ export class CreateVoteSession extends React.Component {
                                 onChange={onEmailChange} 
                                 fullWidth={true} 
                                 errorText={emailErrorText} 
+                                onKeyDown={this.handleEnterKey}
                                 />
                         </StepContent>
                     </Step>
@@ -87,12 +102,14 @@ export class CreateVoteSession extends React.Component {
                         </StepButton>
                         <StepContent>
                             <TextField 
+                                ref={this.focusInputField}
                                 floatingLabelText="" 
                                 floatingLabelFixed={true} 
                                 hintText={session.randomName} 
                                 value={session.displayName} 
                                 onChange={onDisplayNameChange} 
                                 fullWidth={true} 
+                                onKeyDown={this.handleEnterKey}
                                 />
                         </StepContent>
                     </Step>
@@ -102,14 +119,16 @@ export class CreateVoteSession extends React.Component {
                         </StepButton>
                         <StepContent>
                             <TextField 
+                                ref={this.focusInputField}
                                 hintText="Describe your vote session in a few words" 
                                 floatingLabelText="" 
-                                 floatingLabelFixed={true}
+                                floatingLabelFixed={true}
                                 fullWidth={true} 
                                 multiLine={true} 
                                 rows={2}
                                 value={session.description}
                                 onChange={onDescriptionChange}
+                                onKeyDown={this.handleEnterKey}
                                 />
                         </StepContent>
                     </Step>
@@ -123,12 +142,6 @@ export class CreateVoteSession extends React.Component {
                     </Step>
                     </Stepper>
                     <div className="action-buttons"></div>
-                    <FlatButton
-                        label="Cancel"
-                        primary={false}
-                        keyboardFocused={false}
-                        onTouchTap={onCancel}
-                    />
                     <FlatButton
                         label={this.state.nextButtonText}
                         primary={true}

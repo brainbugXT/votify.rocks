@@ -36,7 +36,7 @@ class SessionAccess extends React.Component {
     };
 
     handleCreateDialogOpen () {
-        this.setState({createDialogOpen: true});
+        this.setState({createDialogOpen: !this.state.createDialogOpen});
     };
 
     handleCreateDialogClose () {
@@ -133,31 +133,30 @@ class SessionAccess extends React.Component {
                     fullWidth={true} 
                     />
             </Dialog>
-            <div className="session-access-create-container">
-                <CreateVoteSession 
-                    open={this.state.createDialogOpen}
-                    emailHintText={emailHintText}
-                    emailErrorText={this.state.emailErrorText} 
-                    session={session} 
-                    onDisplayNameChange={onDisplayNameChange}
-                    onEmailChange={onEmailChange}
-                    onDescriptionChange={onDescriptionChange} 
-                    onCanVoteChange={onCanVoteChange}
-                    onRequestClose={() => this.handleCreateDialogClose()}
-                    onCancel={() => this.handleCreateDialogCancel()}
-                    validateEmail={this.validateEmail}
-                    />
+            <div className={'session-access-create-container' + (this.state.createDialogOpen ? ' session-access-create-container-active' : '')}>
+                <FloatingActionButton 
+                    zDepth={this.state.createDialogOpen ? 0 : 2}
+                    className="floating-create-button" 
+                    secondary={true} 
+                    onTouchTap={() => {this.handleCreateDialogOpen()}}>
+                    <ContentAdd style={{ width: this.state.createDialogOpen ? 40 : 22, transform: this.state.createDialogOpen ? 'rotate(225deg)' : undefined}} />
+                </FloatingActionButton>
+                <div className="session-access-create-session">
+                    <CreateVoteSession 
+                        open={this.state.createDialogOpen}
+                        emailHintText={emailHintText}
+                        emailErrorText={this.state.emailErrorText} 
+                        session={session} 
+                        onDisplayNameChange={onDisplayNameChange}
+                        onEmailChange={onEmailChange}
+                        onDescriptionChange={onDescriptionChange} 
+                        onCanVoteChange={onCanVoteChange}
+                        onRequestClose={() => this.handleCreateDialogClose()}
+                        onCancel={() => this.handleCreateDialogCancel()}
+                        validateEmail={this.validateEmail}
+                        />
+                    </div>
                 </div>
-                {
-                    !this.state.createDialogOpen
-                    ? <FloatingActionButton 
-                        className="floating-create-button" 
-                        secondary={true} 
-                        onTouchTap={() => {this.handleCreateDialogOpen()}}>
-                        <ContentAdd />
-                    </FloatingActionButton>
-                    : null
-                }
         </div>
         )}
 

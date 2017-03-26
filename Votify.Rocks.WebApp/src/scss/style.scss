@@ -13,16 +13,36 @@ body{
 }
 
 .session-access-create-container {
-    position: relative;
-    max-width: 400px;
-    margin: auto;
+    animation-name: cancelCreateSessionAnimation;
+    animation-duration: 500ms;
+    position: fixed;
     text-align: center;
-    .action-buttons {
-        padding: 15px;
+    width: 100%;
+    bottom: 70px;
+}
+
+.session-access-create-container-active{
+    animation-name: createSessionAnimation;
+    animation-duration: 500ms;
+    top: 80px;
+    .floating-create-button{
+        top: -60px;
     }
 }
 
-.floating-create-button,
+.session-access-create-session{
+    position: relative;
+    margin: auto;
+    max-width: 400px;
+}
+
+.floating-create-button{
+    margin-right: 30px;
+    margin-bottom: 20px;
+    position: absolute;
+    right: 0;
+}
+
 .floating-start-session-button{
     margin-right: 30px;
     margin-bottom: 20px;
@@ -50,4 +70,22 @@ body{
             text-align: left;
         }
     }
+}
+
+@keyframes createSessionAnimation {
+    from {
+            top: 800px;
+        }
+    to {
+            top: 80px;
+        }
+}
+
+@keyframes cancelCreateSessionAnimation {
+    from {
+            bottom: 700px;
+        }
+    to {
+            bottom: 70px;
+        }
 }
