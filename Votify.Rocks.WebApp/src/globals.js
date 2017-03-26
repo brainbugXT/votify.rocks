@@ -1,4 +1,4 @@
-export const userCookieName = 'VR_USER';
+export const userCookieNamey = 'VR_USER';
 export const participantUid = 'VR_PARTICIPANT_UID';
 
 const devMode = false;
