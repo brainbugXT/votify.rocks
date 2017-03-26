@@ -1,9 +1,11 @@
+import cookie from 'react-cookie';
 import actionType from '../actions/action-types';
+import {userCookieName} from '../globals'
 
 const initialState = {
     key: '',
     participantUid: null,
-    displayName: '',
+    displayName: cookie.load(userCookieName),
     email: '',
     voteValue: 0,
     randomName: '',

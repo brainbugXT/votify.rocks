@@ -1,7 +1,7 @@
+import cookie from 'react-cookie';
 import * as actionCreators from './action-creators';
 import * as api from '../services/service-vote-session';
-
-const recomendedOnly = true;
+import {userCookieName} from '../globals'
 
 export const SignalRConnected = (signalRClientId) => {
     return (dispatch, getState, args) => {
@@ -26,6 +26,9 @@ export const VoteSessionCreate = (participantName, description) => {
 
         api.CreateVoteSession(participant, description, signalRClient)
         .then((votesession) => {
+            if(name){
+                cookie.save(userCookieName, name, { path: '/' });
+            }
             dispatch(actionCreators.voteSessionCreated(votesession));
         })
         .catch((error, a, b) => {
@@ -87,6 +90,9 @@ export const JoinVoteSession = () => {
         };
 
         api.JoinVoteSession(session.key, participant, signalRClient).then((json) => {
+            if(name){
+                cookie.save(userCookieName, name, { path: '/' });
+            }
             dispatch(actionCreators.voteSessionJoined(json.participantUid, json.votesession)); 
         })
         .catch((error) => {
